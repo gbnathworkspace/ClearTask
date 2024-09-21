@@ -6,3 +6,7 @@ def hello_world(request):
 
 def hello_world_3(request):
     return JsonResponse({'message': 'Hello, World!'})
+
+
+def hello_name(request, name):
+    return JsonResponse({'message': f'Hello, {name}!'})
