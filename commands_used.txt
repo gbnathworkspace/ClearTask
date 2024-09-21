@@ -1,0 +1,40 @@
+pip install django djangorestframework
+django-admin startproject taskhub
+django-admin startapp tasks
+python manage.py migrate 
+python manage.py runserver
+
+npx create-react-app frontend
+npm -v
+node -v
+npm install -g npm
+npx create-react-app taskhub-frontend
+npm install redux react-redux axios react-router-dom @mui/material @emotion/react @emotion/styled
+
+src/
+  ├── components/     # Reusable UI components (buttons, forms, etc.)
+  ├── store/          # Redux store setup (actions, reducers, etc.)
+  └── pages/          # Pages or views for routing (Task List, Dashboard, etc.)
+
+components/
+  ├── Header.js        # Header component
+  ├── TaskItem.js      # Individual task component
+  └── Button.js        # Custom button component
+
+store/
+  ├── index.js         # Redux store setup
+  ├── actions.js       # Redux action creators
+  ├── reducers.js      # Root reducer combining all reducers
+  └── taskReducer.js   # Reducer for handling tasks state
+
+pages/
+  ├── Home.js          # Home page
+  ├── TaskList.js      # Page displaying all tasks
+  ├── TaskDetail.js    # Page for viewing a single task
+  └── Dashboard.js     # Admin dashboard or user dashboard
+
+To add to the requirements.txt
+pip freeze > requirements.txt
+
+Install the requirements
+pip install -r requirements.txt
