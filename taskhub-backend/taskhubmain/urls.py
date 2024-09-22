@@ -14,16 +14,32 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# urls.py
+
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from tasks.views import hello_world
+from django.views.decorators.csrf import csrf_exempt
+from cleartask.views import hello_world
+from cleartask.dbm_test import InsertTestView, GetTestView, GetTestDetailView, DeleteTestView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/hello/', hello_world, name='hello_world'),
+    path('api/insert_test/', csrf_exempt(InsertTestView.as_view()), name='insert_test'),
+    path('api/get_test/', csrf_exempt(GetTestView.as_view()), name='get_test'),
+    path('api/get_test/<int:pk>/', csrf_exempt(GetTestDetailView.as_view()), name='get_test_detail'),
+    path('api/delete_test/<int:pk>/', csrf_exempt(DeleteTestView.as_view()), name='delete_test'),
     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
 ]
+
+# # Add this if Necessary
+# from django.conf import settings
+# from django.conf.urls import include
+
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
 
 
 # # Add this if Necessory
