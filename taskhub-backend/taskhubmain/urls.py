@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
-from cleartask.views import hello_world
+from cleartask.views import hello_world, insert_task
 from cleartask.dbm_test import InsertTestView, GetTestView, GetTestDetailView, DeleteTestView
 
 urlpatterns = [
@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/get_test/', csrf_exempt(GetTestView.as_view()), name='get_test'),
     path('api/get_test/<int:pk>/', csrf_exempt(GetTestDetailView.as_view()), name='get_test_detail'),
     path('api/delete_test/<int:pk>/', csrf_exempt(DeleteTestView.as_view()), name='delete_test'),
+    path('api/insert_task/', csrf_exempt(insert_task), name='insert_task'),
     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
 ]
 
